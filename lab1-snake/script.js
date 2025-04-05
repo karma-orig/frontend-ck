@@ -169,9 +169,14 @@ document.querySelector('.right')?.addEventListener('click', () => {
 document.getElementById('reset-btn')?.addEventListener('click', initGame);
 
 // Управление скоростью
+const SPEED_LEVELS = [300, 200, 150, 100, 50];
+let currentSpeedLevel = 1;
+
 document.getElementById('speed')?.addEventListener('input', e => {
-  gameSpeed = 1100 - e.target.value;
-  document.getElementById('speed-value').textContent = `${e.target.value} мс`;
+  currentSpeedLevel = parseInt(e.target.value);
+  gameSpeed = SPEED_LEVELS[currentSpeedLevel];
+  const speeds = ['Очень медленно', 'Медленно', 'Средне', 'Быстро', 'Очень быстро'];
+  document.getElementById('speed-value').textContent = speeds[currentSpeedLevel];
   clearInterval(gameInterval);
   gameInterval = setInterval(gameLoop, gameSpeed);
 });

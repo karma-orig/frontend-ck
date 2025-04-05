@@ -63,6 +63,7 @@
       </div>
 
       <button 
+        type="button"
         class="show-password-btn" 
         @mousedown="showPassword = true"
         @mouseup="showPassword = false"
